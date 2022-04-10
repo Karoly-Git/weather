@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    padding: 1rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.25rem;
+}
+
+/*time box start*/
+.time-box {
+    margin-left: 1rem;
+}
+
+.update-time {
+    font-size: 0.75rem;
+    margin-left: 4rem;
+    color: deepskyblue;
+}
+
+/*time box end*/
+
+/*temperature box start*/
+.temperature-box {
+    display: flex;
+    align-items: center;
+}
+
+.weather-icon {
+    height: 80px;
+}
+
+.thermometer {
+    height: 1.75rem;
+}
+
+.temperature {
+    font-size: 3rem;
+    margin-left: 0.25rem;
+}
+
+/*temperature box end*/
+
+/*wind box start*/
+.wind-box {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.windsock {
+    height: 1rem;
+    margin-left: 4rem;
+}
+
+.speed {
+    margin-left: 0.5rem;
+    color: deepskyblue;
+    font-size: 0.75rem;
+}
+
+.arrow {
+    height: 1rem;
+    margin-left: 0.5rem;
+}
+
+/*wind box end*/
+
+/*condition box start*/
+.condition-box {
+    display: flex;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+.condition {
+    margin-left: 4rem;
+    color: deepskyblue;
+    font-size: 1rem;
+}
+
+/*condition box end*/
+
+/*location box start*/
+.location-box {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.location-icon {
+    width: 1.25rem;
+}
+
+.city {
+    color: darkred;
+    font-size: 2rem;
+    font-weight: 550;
+    margin-left: 0.5rem;
+}
+
+.feels-like {
+    text-transform: lowercase;
+    color: deepskyblue;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/*location box end*/
+
+/*country box start*/
+.country-box {
+    margin-left: 1rem;
+}
+
+.country {
+    *margin-left: 1.75rem;
+    color: darkred;
+    font-size: 1.25rem;
+}
+
+/*country box end*/
+
+/*update box start*/
+.update-box {
+    display: flex;
+    align-items: center;
+    width: 10rem;
+    margin-left: 1rem;
+    *background-color: red;
+}
+
+.new-location {
+    padding: 0.25rem;
+    border: none;
+    width: 7.5rem;
+    transition: all 150ms ease-in-out;
+}
+
+.new-location:hover {
+    background-color: rgba(255, 160, 122, 0.5);
+}
+
+.refresh {
+    height: 1.5rem;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    border-radius: 50%;
+    transition: all 200ms ease-in-out;
+}
+
+.refresh:hover {
+    background-color: rgba(255, 160, 122, 0.5);
+}
+
+/*update box end*/
