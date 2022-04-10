@@ -23,6 +23,7 @@ function fetch_data() {
     fetch(url())
         .then((response) => response.json())
         .then((response) => {
+            console.log(response);
             const lastUpdate = response.current.last_updated;
             const updateTime = lastUpdate.slice(
                 lastUpdate.length - 5,
@@ -38,6 +39,8 @@ function fetch_data() {
             const condition = response.current.condition.text;
 
             const place = response.location.name;
+
+            const region = response.location.region;
 
             const feelsLike = response.current.feelslike_c;
 
@@ -79,6 +82,7 @@ function fetch_data() {
       </div>
       
       <div class="country-box">
+      <span class="region">${region},</span>
       <span class="country">${country}</span>
       </div>
       `;
@@ -88,13 +92,31 @@ function fetch_data() {
 
             const windDirection = document.querySelector(".arrow");
             windDirection.style.transform = `rotate(${windDegree}deg)`;
+
+            const city = document.querySelector(".city");
+            const newLocation = document.querySelector(".new-location");
+
+            city.addEventListener('click', () => {
+                document.querySelector(".new-location").focus();
+                console.log('get focus');
+            })
         });
 }
 
 fetch_data();
 
-const refresh_btn = document.querySelector(".refresh");
 
+const newLocation = document.querySelector(".new-location");
+newLocation.addEventListener("keyup", (event) => {
+    if (newLocation !== "" && event.keyCode === 13) {
+        fetch_data();
+    }
+})
+
+
+const refresh_btn = document.querySelector(".refresh");
 refresh_btn.addEventListener("click", () => {
-    fetch_data();
+    if (newLocation !== "") {
+        fetch_data();
+    }
 });
