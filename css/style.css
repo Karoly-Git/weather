@@ -123,7 +123,6 @@ body {
 }
 
 .country {
-    *margin-left: 1.75rem;
     color: darkred;
     font-size: 1.25rem;
 }
@@ -134,32 +133,22 @@ body {
 .update-box {
     display: flex;
     align-items: center;
-    width: 10rem;
-    margin-left: 1rem;
-    *background-color: red;
 }
 
 .new-location {
-    padding: 0.25rem;
-    border: none;
-    width: 7.5rem;
-    transition: all 150ms ease-in-out;
+    padding: 0.25rem 1rem;
+    width: 100%;
+    display: none;
 }
 
-.new-location:hover {
-    background-color: rgba(255, 160, 122, 0.5);
-}
-
-.refresh {
-    height: 1.5rem;
-    cursor: pointer;
-    margin-left: 0.5rem;
-    border-radius: 50%;
-    transition: all 200ms ease-in-out;
-}
-
-.refresh:hover {
-    background-color: rgba(255, 160, 122, 0.5);
-}
+/*
+  .refresh {
+      height: 1.5rem;
+      cursor: pointer;
+      margin-left: 0.5rem;
+      border-radius: 50%;
+      transition: all 200ms ease-in-out;
+  }
+  */
 
 /*update box end*/

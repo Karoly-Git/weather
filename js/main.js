@@ -23,7 +23,6 @@ function fetch_data() {
     fetch(url())
         .then((response) => response.json())
         .then((response) => {
-            console.log(response);
             const lastUpdate = response.current.last_updated;
             const updateTime = lastUpdate.slice(
                 lastUpdate.length - 5,
@@ -82,7 +81,7 @@ function fetch_data() {
       </div>
       
       <div class="country-box">
-      <span class="region">${region},</span>
+      <span class="region">${region} </span>
       <span class="country">${country}</span>
       </div>
       `;
@@ -96,27 +95,32 @@ function fetch_data() {
             const city = document.querySelector(".city");
             const newLocation = document.querySelector(".new-location");
 
-            city.addEventListener('click', () => {
-                document.querySelector(".new-location").focus();
-                console.log('get focus');
-            })
+            city.addEventListener("click", () => {
+                newLocation.style.display = "block";
+                newLocation.focus();
+            });
         });
 }
 
 fetch_data();
 
-
 const newLocation = document.querySelector(".new-location");
 newLocation.addEventListener("keyup", (event) => {
     if (newLocation !== "" && event.keyCode === 13) {
         fetch_data();
+        event.target.style.display = "none";
     }
-})
+});
 
+newLocation.addEventListener("focusout", (event) => {
+    event.target.style.display = "none";
+});
 
+/*
 const refresh_btn = document.querySelector(".refresh");
 refresh_btn.addEventListener("click", () => {
     if (newLocation !== "") {
         fetch_data();
     }
 });
+*/
