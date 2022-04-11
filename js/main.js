@@ -44,7 +44,7 @@ function fetch_data() {
             const feelsLike = response.current.feelslike_c;
 
             let country = response.location.country;
-            if (["Hongrie", "Ungarn"].includes(country)) {
+            if (["Hongrie", "Ungarn", "Hungría"].includes(country)) {
                 country = "Hungary";
             } else if (country === "UK") {
                 country = "United Kingdom";
