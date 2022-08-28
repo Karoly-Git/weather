@@ -56,10 +56,14 @@ async function fetch_data() {
                 document.querySelector("#location-name").innerHTML = locationName;
 
                 const feelsLike = response.current.feelslike_c;
-                document.querySelector("#feels-like").innerHTML = 'feels: ' + feelsLike + '°c';
+                document.querySelector("#feels-like").innerHTML = 'feels ' + feelsLike + '°c';
 
-                const regionName = response.location.region + ',';
-                document.querySelector("#region-name").innerHTML = regionName;
+                const regionName = response.location.region;
+                if (regionName.length === 0) {
+                    document.querySelector("#region-name").innerHTML = '';
+                } else {
+                    document.querySelector("#region-name").innerHTML = regionName + ',';
+                }
 
                 let countryName = response.location.country;
                 if (["Hongrie", "Ungarn", "Hungría"].includes(countryName)) {
@@ -71,15 +75,15 @@ async function fetch_data() {
 
 
                 document.querySelector("#location-name").addEventListener("click", () => {
-                    console.log('click');
                     document.querySelector("#new-location-name").style.display = "block";
                     document.querySelector("#new-location-name").focus();
                 });
             });
     } catch (err) {
         console.log(err);
+        console.warn('City not found!');
     } finally {
-        console.log('Fetch finished');
+        console.log('Fetch finished.');
     }
 }
 
