@@ -81,7 +81,7 @@ async function fetch_data() {
             });
     } catch (err) {
         console.log(err);
-        console.warn('City not found!');
+        alert('City not found!');
     } finally {
         console.log('Fetch finished.');
     }
