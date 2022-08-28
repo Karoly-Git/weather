@@ -95,6 +95,7 @@
 #new-location-box {
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 #new-location-name {
