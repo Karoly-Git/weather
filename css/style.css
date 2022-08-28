@@ -5,140 +5,101 @@
     font-family: sans-serif;
 }
 
-body {
-    padding: 1rem;
-}
-
 .container {
-    display: flex;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    padding: 0.5rem;
+    display: inline-flex;
     flex-direction: column;
-    padding: 0.25rem;
+    background-color: rgba(0, 0, 0, 0.15);
+    border: 1px dashed rgba(0, 0, 0, 0.35);
 }
 
-/*time box start*/
-.time-box {
-    margin-left: 1rem;
-}
-
-.update-time {
+#last-update-time {
     font-size: 0.75rem;
-    margin-left: 4rem;
-    color: deepskyblue;
 }
 
-/*time box end*/
-
-/*temperature box start*/
-.temperature-box {
+#temperature-box {
     display: flex;
     align-items: center;
 }
 
-.weather-icon {
-    height: 80px;
-}
-
-.thermometer {
+#thermometer-icon {
     height: 1.75rem;
+    display: none;
 }
 
-.temperature {
+#temperature {
     font-size: 3rem;
-    margin-left: 0.25rem;
 }
 
-/*temperature box end*/
-
-/*wind box start*/
-.wind-box {
+#wind-box {
     display: flex;
     align-items: center;
-    margin-left: 1rem;
+    margin-left: 2rem;
 }
 
-.windsock {
+#windsock-icon {
     height: 1rem;
-    margin-left: 4rem;
 }
 
-.speed {
+#wind-speed {
     margin-left: 0.5rem;
-    color: deepskyblue;
     font-size: 0.75rem;
 }
 
-.arrow {
+#wind-degree {
     height: 1rem;
     margin-left: 0.5rem;
 }
 
-/*wind box end*/
-
-/*condition box start*/
-.condition-box {
+#weather-condition-box {
     display: flex;
-    margin-left: 1rem;
     margin-top: 0.5rem;
+    margin-left: 2rem;
 }
 
-.condition {
-    margin-left: 4rem;
-    color: deepskyblue;
+#weather-condition {
     font-size: 1rem;
 }
 
-/*condition box end*/
-
-/*location box start*/
-.location-box {
+#location-box {
     display: flex;
-    align-items: center;
-    margin-left: 1rem;
+    align-items: flex-end;
 }
 
-.location-icon {
+#location-icon {
     width: 1.25rem;
 }
 
-.city {
+#location-name {
     color: darkred;
     font-size: 2rem;
     font-weight: 550;
     margin-left: 0.5rem;
+    margin-bottom: -5px;
     cursor: pointer;
 }
 
-.feels-like {
-    text-transform: lowercase;
-    color: deepskyblue;
+#feels-like {
     font-size: 1rem;
     font-weight: 400;
+    margin-left: 0.5rem;
 }
 
-/*location box end*/
-
-/*country box start*/
-.country-box {
-    margin-left: 1rem;
-}
-
-.country {
+#country-name {
     color: darkred;
     font-size: 1.25rem;
 }
 
-/*country box end*/
-
-/*update box start*/
-.update-box {
+#new-location-box {
     display: flex;
     align-items: center;
 }
 
-.new-location {
+#new-location-name {
+    margin-top: 1rem;
     padding: 0.25rem 1rem;
     width: 100%;
     display: none;
 }
-
-/*update box end*/

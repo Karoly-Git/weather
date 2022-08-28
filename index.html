@@ -15,39 +15,38 @@
 <body>
     <div class="container">
         <div id="time-box">
-            <span class="update-time"></span>
+            <span id="last-update-time"></span>
         </div>
-        <div class="temperature-box">
-            <img class="weather-icon" src="" alt="weather icon" />
-            <img class="thermometer" src="./img/thermometer.png" alt="thermometer icon" />
-            <span class="temperature"></span>
-        </div>
-
-        <div class="wind-box">
-            <img class="windsock" src="./img/windsock.png" alt="windsock"></img>
-            <span class="speed"></span>
-            <img class="arrow" src="./img/arrow.png" alt="arrow icon"></img>
+        <div id="temperature-box">
+            <img id="weather-icon" src="./img/favicon.ico" alt="weather icon" />
+            <img id="thermometer-icon" src="./img/thermometer.png" alt="thermometer icon" />
+            <span id="temperature"></span>
         </div>
 
-        <div class="condition-box">
-            <span class="condition"></span>
+        <div id="wind-box">
+            <img id="windsock-icon" src="./img/windsock.png" alt="windsock"></img>
+            <span id="wind-speed"></span>
+            <img id="wind-degree" src="./img/arrow.png" alt="arrow icon"></img>
         </div>
 
-        <div class="location-box">
-            <img class="location-icon" src="./img/location.png" alt="location icon" />
-            <div class="city">
-                <span class="feels"></span>
-            </div>
+        <div id="weather-condition-box">
+            <span id="weather-condition"></span>
+            <span id="feels-like"></span>
         </div>
 
-        <div class="country-box">
-            <span class="region"></span>
-            <span clas="country"></span>
+        <div id="location-box">
+            <img id="location-icon" src="./img/location.png" alt="location icon" />
+            <span id="location-name"></span>
         </div>
 
-    </div>
-    <div class="update-box">
-        <input placeholder="type new location" class="new-location" type="text" />
+        <div id="country-box">
+            <span id="region-name"></span>
+            <span id="country-name"></span>
+        </div>
+
+        <div id="new-location-box">
+            <input id="new-location-name" placeholder="type new location" type="text" />
+        </div>
     </div>
 </body>
 
