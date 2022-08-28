@@ -6,19 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
-    <script src="https://kit.fontawesome.com/2a269bc26f.js" crossorigin="anonymous"></script>
-    <title>Weather</title>
+    <link id="favicon" rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <script defer src="https://kit.fontawesome.com/2a269bc26f.js" crossorigin="anonymous"></script>
+    <script defer src="./js/main.js"></script>
+    <title>Weather App</title>
 </head>
 
 <body>
-    <div class="container"></div>
-    <div class="update-box">
-        <!--<img class="refresh" src="./img/refresh.png" alt="" srcset="" />-->
-        <input placeholder="type new location" class="new-location" type="text" name="" id="" />
+    <div class="container">
+        <div id="time-box">
+            <span class="update-time"></span>
+        </div>
+        <div class="temperature-box">
+            <img class="weather-icon" src="" alt="weather icon" />
+            <img class="thermometer" src="./img/thermometer.png" alt="thermometer icon" />
+            <span class="temperature"></span>
+        </div>
+
+        <div class="wind-box">
+            <img class="windsock" src="./img/windsock.png" alt="windsock"></img>
+            <span class="speed"></span>
+            <img class="arrow" src="./img/arrow.png" alt="arrow icon"></img>
+        </div>
+
+        <div class="condition-box">
+            <span class="condition"></span>
+        </div>
+
+        <div class="location-box">
+            <img class="location-icon" src="./img/location.png" alt="location icon" />
+            <div class="city">
+                <span class="feels"></span>
+            </div>
+        </div>
+
+        <div class="country-box">
+            <span class="region"></span>
+            <span clas="country"></span>
+        </div>
+
     </div>
-    <script type="module" src="./js/main.js"></script>
+    <div class="update-box">
+        <input placeholder="type new location" class="new-location" type="text" />
+    </div>
 </body>
 
 </html>

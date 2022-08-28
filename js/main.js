@@ -1,28 +1,30 @@
 // https://www.weatherapi.com/
+// auto location detection
 
 let baseUrl = "https://api.weatherapi.com/v1/";
 let apiMethod = "current.json";
 let key = "bfde22645c6c43d3a3e224519220804";
-let location = "sw181eg";
+let myLocation = "sw181eg";
 let aqi = "no";
+console.log(baseUrl + apiMethod + "?key=" + key + "&q=" + myLocation + "&aqi=" + aqi);
 
 let url = () => {
-    let newlocation = document.querySelector(".new-location").value;
-    if (newlocation === "") {
+    let myNewLocation = document.querySelector(".new-location").value;
+    if (myNewLocation === "") {
         return (
-            baseUrl + apiMethod + "?key=" + key + "&q=" + location + "&aqi=" + aqi
+            baseUrl + apiMethod + "?key=" + key + "&q=" + myLocation + "&aqi=" + aqi
         );
     } else {
         return (
-            baseUrl + apiMethod + "?key=" + key + "&q=" + newlocation + "&aqi=" + aqi
+            baseUrl + apiMethod + "?key=" + key + "&q=" + myNewLocation + "&aqi=" + aqi
         );
     }
 };
 
 function fetch_data() {
     fetch(url())
-        .then((response) => response.json())
-        .then((response) => {
+        .then(response => response.json())
+        .then(response => {
             const lastUpdate = response.current.last_updated;
             const updateTime = lastUpdate.slice(
                 lastUpdate.length - 5,
@@ -30,6 +32,7 @@ function fetch_data() {
             );
 
             const iconPath = "https:" + response.current.condition.icon;
+            document.querySelector('#favicon').setAttribute('href', iconPath);
 
             const temperature = response.current.temp_c;
 
@@ -38,6 +41,7 @@ function fetch_data() {
             const condition = response.current.condition.text;
 
             const place = response.location.name;
+            document.querySelector('title').innerText = place;
 
             const region = response.location.region;
 
@@ -93,33 +97,33 @@ function fetch_data() {
             windDirection.style.transform = `rotate(${windDegree}deg)`;
 
             const city = document.querySelector(".city");
-            const newLocation = document.querySelector(".new-location");
+            const myNewLocation = document.querySelector(".new-location");
 
             city.addEventListener("click", () => {
-                newLocation.style.display = "block";
-                newLocation.focus();
+                myNewLocation.style.display = "block";
+                myNewLocation.focus();
             });
         });
 }
 
 fetch_data();
 
-const newLocation = document.querySelector(".new-location");
-newLocation.addEventListener("keyup", (event) => {
-    if (newLocation !== "" && event.keyCode === 13) {
+const myNewLocation = document.querySelector(".new-location");
+myNewLocation.addEventListener("keyup", (event) => {
+    if (myNewLocation !== "" && event.keyCode === 13) {
         fetch_data();
         event.target.style.display = "none";
     }
 });
 
-newLocation.addEventListener("focusout", (event) => {
+myNewLocation.addEventListener("focusout", (event) => {
     event.target.style.display = "none";
 });
 
 /*
 const refresh_btn = document.querySelector(".refresh");
 refresh_btn.addEventListener("click", () => {
-    if (newLocation !== "") {
+    if (myNewLocation !== "") {
         fetch_data();
     }
 });
