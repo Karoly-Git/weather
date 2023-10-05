@@ -2,105 +2,142 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .container {
-    margin-top: 1rem;
-    margin-left: 1rem;
-    padding: 0.5rem;
-    display: inline-flex;
-    flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.15);
-    border: 1px dashed rgba(0, 0, 0, 0.35);
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    text-align: center;
 }
 
 #last-update-time {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 1rem;
 }
 
 #temperature-box {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 #thermometer-icon {
-    height: 1.75rem;
-    display: none;
+    height: 2rem;
+    margin-right: 0.5rem;
 }
 
 #temperature {
     font-size: 3rem;
+    font-weight: bold;
 }
 
 #wind-box {
     display: flex;
     align-items: center;
-    margin-left: 2rem;
+    justify-content: center;
+    margin-top: 1.5rem;
 }
 
 #windsock-icon {
-    height: 1rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
 }
 
 #wind-speed {
-    margin-left: 0.5rem;
-    font-size: 0.75rem;
+    font-size: 1rem;
+    color: #555;
 }
 
 #wind-degree {
-    height: 1rem;
-    margin-left: 0.5rem;
+    height: 1.5rem;
+    transform-origin: center;
+    margin-left: 1rem;
 }
 
 #weather-condition-box {
+    margin-top: 1.5rem;
     display: flex;
-    margin-top: 0.5rem;
-    margin-left: 2rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #weather-condition {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
 }
 
 #location-box {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
 }
 
 #location-icon {
-    width: 1.25rem;
+    width: 2rem;
+    margin-right: 0.5rem;
 }
 
 #location-name {
-    color: darkred;
     font-size: 2rem;
-    font-weight: 550;
-    margin-left: 0.5rem;
-    margin-bottom: -5px;
+    font-weight: bold;
+    color: #e74c3c;
     cursor: pointer;
 }
 
 #feels-like {
     font-size: 1rem;
-    font-weight: 400;
     margin-left: 0.5rem;
+    color: #555;
 }
 
 #country-name {
-    color: darkred;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e74c3c;
+    margin-top: 0.5rem;
 }
 
 #new-location-box {
-    display: flex;
-    align-items: center;
-    width: 100%;
+    margin-top: 1.5rem;
+    text-align: center;
 }
 
 #new-location-name {
-    margin-top: 1rem;
-    padding: 0.25rem 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
     width: 100%;
+    transition: background-color 0.3s, border-color 0.3s;
     display: none;
+}
+
+#new-location-name::placeholder {
+    color: #aaa;
+}
+
+#new-location-name:focus {
+    outline: none;
+    background-color: #fff;
+    border-color: #e74c3c;
+}
+
+#new-location-name:focus::placeholder {
+    color: #e74c3c;
 }
