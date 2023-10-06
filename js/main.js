@@ -48,7 +48,7 @@ function updateWeatherElements(response) {
     document.querySelector("#country-name").innerHTML = countryName;
 }
 
-function fetch_data() {
+function fetchData() {
     const myNewLocation = document.querySelector("#new-location-name").value;
     const location = myNewLocation || myLocation;
     const url = `${baseUrl}${apiMethod}?key=${key}&q=${location}&aqi=${aqi}`;
@@ -67,16 +67,21 @@ function fetch_data() {
         });
 }
 
-document.querySelector("#location-name").addEventListener("click", (event) => {
-    if (event.target.id === "location-name") {
-        document.querySelector("#new-location-name").style.display = "block";
-        document.querySelector("#new-location-name").focus();
-    }
+document.querySelector("#location-name").addEventListener("click", () => {
+    document.querySelector("#new-location-name").style.display = "block";
+    document.querySelector("#new-location-name").focus();
+});
+
+let clickCount = 0;
+document.querySelector("#refresh").addEventListener("click", (event) => {
+    fetchData();
+    clickCount++;
+    event.target.style.transform = `rotate(${-180 * clickCount}deg)`
 });
 
 document.querySelector("#new-location-name").addEventListener("keyup", (event) => {
     if (event.keyCode === 13) {
-        fetch_data();
+        fetchData();
         event.target.style.display = "none";
     }
 });
@@ -86,4 +91,4 @@ document.querySelector("#new-location-name").addEventListener("focusout", (event
 });
 
 // Initial fetch
-fetch_data();
+fetchData();

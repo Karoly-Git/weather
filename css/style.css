@@ -17,14 +17,28 @@ body {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    padding: 2rem;
+    padding: 1rem;
     text-align: center;
+}
+
+#time-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#refresh {
+    width: 1rem;
+    height: 1rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    transform: rotate(0deg);
+    transition: all 850ms ease;
 }
 
 #last-update-time {
     font-size: 0.8rem;
     color: #777;
-    margin-bottom: 1rem;
 }
 
 #temperature-box {
@@ -46,7 +60,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 }
 
 #windsock-icon {
@@ -66,7 +80,7 @@ body {
 }
 
 #weather-condition-box {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -75,18 +89,17 @@ body {
 
 #weather-condition {
     font-size: 1.5rem;
-    margin-top: 0.5rem;
 }
 
 #location-box {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 }
 
 #location-icon {
-    width: 2rem;
+    width: 1rem;
     margin-right: 0.5rem;
 }
 
