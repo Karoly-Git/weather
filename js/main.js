@@ -1,104 +1,89 @@
 // https://www.weatherapi.com/
 // auto location detection?
 
-let baseUrl = "https://api.weatherapi.com/v1/";
-let apiMethod = "current.json";
-let key = "bfde22645c6c43d3a3e224519220804";
-let myLocation = "sw184fy";
-let aqi = "no";
-console.log(baseUrl + apiMethod + "?key=" + key + "&q=" + myLocation + "&aqi=" + aqi);
+const baseUrl = "https://api.weatherapi.com/v1/";
+const apiMethod = "current.json";
+const key = "bfde22645c6c43d3a3e224519220804";
+const myLocation = "sw184fy";
+const aqi = "no";
 
-let url = () => {
-    let myNewLocation = document.querySelector("#new-location-name").value;
-    if (myNewLocation === "") {
-        return (
-            baseUrl + apiMethod + "?key=" + key + "&q=" + myLocation + "&aqi=" + aqi
-        );
-    } else {
-        return (
-            baseUrl + apiMethod + "?key=" + key + "&q=" + myNewLocation + "&aqi=" + aqi
-        );
+function updateWeatherElements(response) {
+    const lastUpdateTime = response.current.last_updated.slice(-5);
+    document.querySelector('#last-update-time').innerHTML = lastUpdateTime;
+
+    const iconPath = "https:" + response.current.condition.icon;
+    document.querySelector('#favicon').setAttribute('href', iconPath);
+
+    const locationName = response.location.name;
+    document.querySelector('title').innerHTML = locationName;
+
+    const temperature = response.current.temp_c;
+    document.querySelector('#temperature').innerHTML = temperature + '°';
+
+    const windSpeed = response.current.wind_kph;
+    document.querySelector('#wind-speed').innerHTML = windSpeed + 'km/h';
+
+    document.querySelector('#weather-icon').setAttribute('src', iconPath);
+
+    const windDegree = response.current.wind_degree;
+    document.querySelector("#wind-degree").style.transform = `rotate(${windDegree}deg)`;
+
+    const weatherCondition = response.current.condition.text;
+    document.querySelector('#weather-condition').innerHTML = weatherCondition;
+
+    document.querySelector("#location-name").innerHTML = locationName;
+
+    const feelsLike = response.current.feelslike_c;
+    document.querySelector("#feels-like").innerHTML = 'Feels ' + feelsLike + '°';
+
+    const regionName = response.location.region;
+    document.querySelector("#region-name").innerHTML = regionName ? regionName + ',' : '';
+
+    let countryName = response.location.country;
+    if (["Hongrie", "Ungarn", "Hungría"].includes(countryName)) {
+        countryName = "Hungary";
+    } else if (countryName === "UK") {
+        countryName = "United Kingdom";
     }
-};
-
-async function fetch_data() {
-    try {
-        await fetch(url())
-            .then(response => response.json())
-            .then(response => {
-                let lastUpdateTime = response.current.last_updated;
-                lastUpdateTime = lastUpdateTime.slice(
-                    lastUpdateTime.length - 5,
-                    lastUpdateTime.length
-                );
-                document.querySelector('#last-update-time').innerHTML = lastUpdateTime;
-
-                const iconPath = "https:" + response.current.condition.icon;
-                document.querySelector('#favicon').setAttribute('href', iconPath);
-
-                const locationName = response.location.name;
-                document.querySelector('title').innerHTML = locationName;
-
-                const temperature = response.current.temp_c;
-                document.querySelector('#temperature').innerHTML = temperature + '°';
-
-                const windSpeed = response.current.wind_kph;
-                document.querySelector('#wind-speed').innerHTML = windSpeed + 'km/h';
-
-                document.querySelector('#weather-icon').setAttribute('src', iconPath);
-
-                const windDegree = response.current.wind_degree;
-                document.querySelector("#wind-degree").style.transform = `rotate(${windDegree}deg)`;
-
-                const weatherCondition = response.current.condition.text;
-                document.querySelector('#weather-condition').innerHTML = weatherCondition;
-
-                document.querySelector("#location-name").innerHTML = locationName;
-
-                const feelsLike = response.current.feelslike_c;
-                document.querySelector("#feels-like").innerHTML = 'Feels ' + feelsLike + '°';
-
-                const regionName = response.location.region;
-                if (regionName.length === 0) {
-                    document.querySelector("#region-name").innerHTML = '';
-                } else {
-                    document.querySelector("#region-name").innerHTML = regionName + ',';
-                }
-
-                let countryName = response.location.country;
-                if (["Hongrie", "Ungarn", "Hungría"].includes(countryName)) {
-                    countryName = "Hungary";
-                } else if (countryName === "UK") {
-                    countryName = "United Kingdom";
-                }
-                document.querySelector("#country-name").innerHTML = countryName;
-
-
-                document.querySelector("#location-name").addEventListener("click", () => {
-                    document.querySelector("#new-location-name").style.display = "block";
-                    document.querySelector("#new-location-name").focus();
-                });
-            });
-    } catch (err) {
-        console.log(err);
-        alert('City not found!');
-    } finally {
-        console.log('Fetch finished.');
-    }
+    document.querySelector("#country-name").innerHTML = countryName;
 }
 
-fetch_data();
+function fetch_data() {
+    const myNewLocation = document.querySelector("#new-location-name").value;
+    const location = myNewLocation || myLocation;
+    const url = `${baseUrl}${apiMethod}?key=${key}&q=${location}&aqi=${aqi}`;
 
-const newLocationName = document.querySelector("#new-location-name");
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            updateWeatherElements(data);
+        })
+        .catch(err => {
+            console.log(err);
+            alert('City not found!');
+        })
+        .finally(() => {
+            console.log('Fetch finished.');
+        });
+}
 
-newLocationName.addEventListener("keyup", (event) => {
-    if (newLocationName !== "" && event.keyCode === 13) {
+document.querySelector("#location-name").addEventListener("click", (event) => {
+    if (event.target.id === "location-name") {
+        document.querySelector("#new-location-name").style.display = "block";
+        document.querySelector("#new-location-name").focus();
+    }
+});
+
+document.querySelector("#new-location-name").addEventListener("keyup", (event) => {
+    if (event.keyCode === 13) {
         fetch_data();
         event.target.style.display = "none";
     }
 });
 
-newLocationName.addEventListener("focusout", (event) => {
+document.querySelector("#new-location-name").addEventListener("focusout", (event) => {
     event.target.style.display = "none";
 });
 
+// Initial fetch
+fetch_data();
