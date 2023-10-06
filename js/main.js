@@ -4,7 +4,7 @@
 let baseUrl = "https://api.weatherapi.com/v1/";
 let apiMethod = "current.json";
 let key = "bfde22645c6c43d3a3e224519220804";
-let myLocation = "sw181eg";
+let myLocation = "sw184fy";
 let aqi = "no";
 console.log(baseUrl + apiMethod + "?key=" + key + "&q=" + myLocation + "&aqi=" + aqi);
 
@@ -31,7 +31,7 @@ async function fetch_data() {
                     lastUpdateTime.length - 5,
                     lastUpdateTime.length
                 );
-                document.querySelector('#last-update-time').innerHTML = 'Last update: ' + lastUpdateTime;
+                document.querySelector('#last-update-time').innerHTML = lastUpdateTime;
 
                 const iconPath = "https:" + response.current.condition.icon;
                 document.querySelector('#favicon').setAttribute('href', iconPath);
@@ -40,7 +40,7 @@ async function fetch_data() {
                 document.querySelector('title').innerHTML = locationName;
 
                 const temperature = response.current.temp_c;
-                document.querySelector('#temperature').innerHTML = temperature + '°c';
+                document.querySelector('#temperature').innerHTML = temperature + '°';
 
                 const windSpeed = response.current.wind_kph;
                 document.querySelector('#wind-speed').innerHTML = windSpeed + 'km/h';
@@ -51,12 +51,12 @@ async function fetch_data() {
                 document.querySelector("#wind-degree").style.transform = `rotate(${windDegree}deg)`;
 
                 const weatherCondition = response.current.condition.text;
-                document.querySelector('#weather-condition').innerHTML = weatherCondition + ',';
+                document.querySelector('#weather-condition').innerHTML = weatherCondition;
 
                 document.querySelector("#location-name").innerHTML = locationName;
 
                 const feelsLike = response.current.feelslike_c;
-                document.querySelector("#feels-like").innerHTML = 'feels ' + feelsLike + '°c';
+                document.querySelector("#feels-like").innerHTML = 'Feels ' + feelsLike + '°';
 
                 const regionName = response.location.region;
                 if (regionName.length === 0) {

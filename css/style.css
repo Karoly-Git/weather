@@ -40,7 +40,6 @@ body {
 
 #temperature {
     font-size: 3rem;
-    font-weight: bold;
 }
 
 #wind-box {
@@ -76,7 +75,6 @@ body {
 
 #weather-condition {
     font-size: 1.5rem;
-    font-weight: bold;
     margin-top: 0.5rem;
 }
 
@@ -102,6 +100,7 @@ body {
 #feels-like {
     font-size: 1rem;
     margin-left: 0.5rem;
+    margin-top: 0.5rem;
     color: #555;
 }
 
