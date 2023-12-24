@@ -9,6 +9,7 @@ const aqi = "no";
 
 // Cloned on 24/12/2023
 // Pulled at 22:29
+// Comment from ASUS
 
 function updateWeatherElements(response) {
     const lastUpdateTime = response.current.last_updated.slice(-5);
