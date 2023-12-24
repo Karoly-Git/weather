@@ -7,10 +7,6 @@ const key = "bfde22645c6c43d3a3e224519220804";
 const myLocation = "sw184fy";
 const aqi = "no";
 
-// Cloned on 24/12/2023
-// Pulled at 22:29
-// Comment from A5
-
 function updateWeatherElements(response) {
     const lastUpdateTime = response.current.last_updated.slice(-5);
     document.querySelector('#last-update-time').innerHTML = lastUpdateTime;
